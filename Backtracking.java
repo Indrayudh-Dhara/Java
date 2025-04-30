@@ -42,7 +42,7 @@ public class Backtracking {
             char curr = str.charAt(i);
             String newStr = str.substring(0, i)+str.substring(i+1);
 
-            permutations(newStr, ans+curr);  //original str is not changed but its recursion this newstr acts as str for each of the recursive calls
+            permutations(newStr, ans+curr);  //original str is not changed but its recursion this newstr acts as str for each of the recursive callse
         }
     }
 
