@@ -147,6 +147,22 @@ public class divAndCon {
         }
     }
 
+    public static void mergeSort(int arr[] , int si  , int ei){
+        int mid = (si+ei)/2;
+        mergeSort(arr, si, mid);
+        mergeSort(arr, mid+1, ei);
+        merge(arr, si, ei, mid);
+    }
+
+    public static void merge(int arr[] , int si , int ei , int mid){
+        int temp[] = new int[ei-si+1];//to create the appropriate length of array as of the current broken  small arr part
+        while(si<= mid && ei>=mid+1){
+            if(arr[si]>)
+        }
+
+    }
+
+
 
 
     public static int majorityELement(int arr[] , int si , int ei){

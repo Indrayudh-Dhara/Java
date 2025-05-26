@@ -46,10 +46,30 @@ public class Backtracking {
         }
     }
 
+    public static void nQueens(char board[][]){
+        //base case
+
+        //work
+
+        nQueens()
+    }
+
+  
+
     public static void main(String[] args) {
         String str = "abc";
         // subsets(str,  "",0);
-        permutations(str, "");
+        // permutations(str, "");
+        int n =2;
+        char board[][] = new char[n][n];
+        for(int i=0 ; i<board.length;i++){
+            for(int j=0 ; j<board[0].length; j++){
+                board[i][j]='x';
+            }
+            System.out.println();
+        }
+
+
     }
     
 }

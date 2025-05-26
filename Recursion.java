@@ -259,10 +259,110 @@ public class Recursion {
             
     }
 
+    public static int firstOccurence2(int arr[] , int target , int i){
+        if(i==arr.length){
+            return -1;
+        }
+        if(arr[i]== target){
+            return i ;
+        }
+
+       return firstOccurence(arr, target, i+1);
+    }
+
+    public static int binarySearch(int arr[] , int target , int si , int ei){
+          if (si > ei) {
+        return -1; // base case: target not found
+    }
+        int mid=(si+ei)/2;
+        
+        if(arr[mid]==target){
+            return mid;
+        }
+
+        if(target>arr[mid]){
+           return binarySearch(arr, target, mid+1, ei);
+        }else{
+           return binarySearch(arr, target, si, mid-1);
+        }
+        
+    }
+
+    public static void reverseArr(int arr[]){
+        for(int i=0 ; i<(arr.length)/2 ; i++){
+            int temp=arr[arr.length-1-i];
+            arr[arr.length-1-i]=arr[i];
+            arr[i]=temp;
+        }
+        printArr(arr);
+      
+    }
+
+    public static void printArr(int arr[]){
+        for( int i = 0 ; i<arr.length ; i++){
+            System.out.print(arr[i]);
+            System.out.print(" ");
+      
+        }
+    }
+
+    public static void pairs(int arr[]){
+        for(int i = 0;  i<arr.length ; i++){
+            for(int j = i+1 ; j<arr.length ; j++){
+                System.out.print("(" + arr[i] + "," + arr[j] + ")");
+                System.out.print(" ");
+            }
+        }
+    }
+
+    public static void subArr(int arr[]){
+        int sum=0;
+        for(int i =  0; i<arr.length ; i++){
+            for(int j=i ; j<arr.length ; j++){
+                int sumSub=0;
+                for(int k = i ;k<=j; k++ ){
+                  sumSub+=arr[k];
+                  if(sumSub>sum){
+                    sum=sumSub;
+                  }
+                }
+               
+
+            }
+
+        }
+        System.out.println(sum);
+    }
+
+    public static void prefixSumSubArr(int arr[]){
+        int currSum=0;
+        int maxSum = Integer.MIN_VALUE;
+        int prefixArr[] = new int[arr.length];
+        prefixArr[0]=arr[0];
+       for(int i = 1 ; i<prefixArr.length ; i++){
+        prefixArr[i]=prefixArr[i-1]+arr[i];
+       }
+       printArr(prefixArr);
+       System.out.println();
+
+       for(int i=1 ; i<arr.length ; i++){
+        int start = i;
+        for(int j = i ; j<arr.length ;j++){
+            int end = j;
+            currSum = start==0? prefixArr[end]:prefixArr[end]-prefixArr[start-1];
+            if(maxSum<currSum){
+                maxSum=currSum;
+            };
+            
+        }
+       }
+
+    }
 
     public static void main(String[] args) {
-        String str = "abcab";
-        System.out.println(continguosSubstr(str, 0, str.length()-1));
+        int arr[] = {2,4,6,8,10};
+        prefixSumSubArr(arr);
+
     };
     
 };
