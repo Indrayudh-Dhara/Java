@@ -37,12 +37,6 @@ Each folder contains Java files related to specific DSA topics, organized for ea
 
 4. Run any file:
 
-    1. Compile with :  
-    ```bash
-   javac FileName.java 
-
-   2. Run with :
-
-   ```bash
-   javac FileName.java 
-
+```bash
+   javac FileName.java  //to compile
+   java FileName.java   //to execute
