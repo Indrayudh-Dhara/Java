@@ -28,7 +28,7 @@ Each folder contains Java files related to specific DSA topics, organized for ea
 
 1. Clone the repo:
    ```bash
-   git clone https://github.com/your-username/dsa-java-vscode.git
+   git clone https://github.com/Indrayudh-Dhara/Java.git
    cd dsa-java-vscode
 
 2. Open the folder in VS Code.
