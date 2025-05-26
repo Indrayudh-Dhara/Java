@@ -4,9 +4,9 @@ This repository contains all of my Data Structures and Algorithms (DSA) practice
 
 ## 📁 Folder Structure
 
-├── OOPS/
-├── Recursion/
-├── 2-D Arrays/
+├── OOPS/  
+├── Recursion/  
+├── 2-D Arrays/  
 <!-- ├── Queues/
  ├── Trees/
 ├── Graphs/
