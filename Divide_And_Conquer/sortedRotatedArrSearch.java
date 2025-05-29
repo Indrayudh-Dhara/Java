@@ -19,9 +19,10 @@ public class sortedRotatedArrSearch {
 
         //seeing whether the mid is on first sorted half
         if(arr[si]<=arr[mid]){
-            //searching in that first sorted half it mid lies on it
+            //searching in that first sorted half if mid lies on it
             //left side
             if(arr[si]<=target && target>=arr[mid]){
+        
                 return sortedRotatedArr(arr, target, si, mid-1);
             }else{
                 //right complete part (not only for the right of this sorted half)
