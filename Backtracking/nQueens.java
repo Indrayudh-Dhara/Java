@@ -14,6 +14,7 @@ public class nQueens {
 
         //nq in nrows for
         //now nq in nrows while checking condition which is if its safe or not 
+        
         //looping in column
         
         for(int j= 0 ;j<board.length ; j++){
