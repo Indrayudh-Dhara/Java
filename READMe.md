@@ -7,6 +7,8 @@ This repository contains all of my Data Structures and Algorithms (DSA) practice
 ├── OOPS/  
 ├── Recursion/  
 ├── 2-D Arrays/  
+├── Divide_And_Conquer/    
+├── Backtracking/  
 <!-- ├── Queues/
  ├── Trees/
 ├── Graphs/
