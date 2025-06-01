@@ -67,7 +67,7 @@ public class sudokuSolver {
 
                 // after placing digit the next recusive call for the next cell is done
                 if (sudokuSolverCode(sudoku, nextRow, nextCol)) {
-                    return true; // If solution is found, stop further calls
+                    return true; // If solution is found, stop further calls(no need) , instead propagrate the answer upward 
                 }
                 
               //whenever the sudokusolver returns false(fails to place a digit) ,only then this step is executed when call stack is returning
