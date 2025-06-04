@@ -153,15 +153,113 @@ public class LinkedList {
         
     };
 
+    public void reverse(){   //O(n)
+        //nothing before head so prev =null while initializing
+        Node prev=null;
+        //head gets stored to tail then tail gets stored to curr , it changes the tail for the reverse as well as initialize the curr for traversing
+        Node curr=tail=head;
+        
+        Node next;
+        while(curr!= null){
+            //creates the next node for every iteration
+             next = curr.next;
+             //reversing process , changes curr.next to link the previous node 
+             curr.next=prev;
+             //changes the previous to the nextone(curr)
+             prev=curr;
+             //changes the curr to the next one (next)
+             curr=next;
+
+            }
+            //after everything is done curr is on null so head is prev
+            head=prev;
+    }
+
+    //12345 index3-4 remove 4 so we need previous index , ie index i=1
+    public void findAndRemovefromStart(int index){
+        if(index==0){
+            removeFirst();
+            return;
+        }else if(index==size-1){
+            removeLast();
+            return;
+        }else if(index>size){
+            System.out.println("Index greater than size");
+            return;
+        }
+        Node temp=head;
+       
+        //iterate to the previous index  element 
+        for(int i= 0 ; i<=index-2; i++){
+            temp=temp.next;
+        }
+      
+        //at this point temp has the previous index element and temp2 has the index element
+        temp.next=temp.next.next;
+        size--; 
+    }
+    //slow and fast approach , slow increases by one and fast by 2 . So when fast is at the end slow is at the middle(half of fast)
+    public Node findMiddle(Node head){
+
+        Node slow = head;
+        Node fast = head;
+        //fast null when even & fast.next null when odd
+        while(fast!=null && fast.next!=null){
+            slow=slow.next;
+            fast=fast.next.next;
+        
+        }
+        return slow;
+    }
+    public boolean checkPalindrome(){
+        //edge cases
+        if(head==null || head.next==null){
+            return true;
+        }
+        //find middle
+        Node midNode = findMiddle(head);
+        //reverse 3 parameters 4 works
+        Node prev = null;
+        //starting from midNode thus reversing only the second half
+        Node curr = midNode;
+        Node next;
+        while(curr!=null){
+            next = curr.next;
+            curr.next=prev;
+            prev=curr;
+            curr=next;
+        }
+        // here we assign the left and right(new starting point of the currently reversed portion) (2 Pointer Approach)
+        Node right = prev;
+        Node left = head;
+        //check left and right
+        while(right!=null){
+            if(right.data!=left.data){
+                return false;
+            }
+            //changing the two pointers
+            right=right.next;
+            left=left.next;
+        }
+
+        return true;
+    }
+        
+    
+
     public static void main(String[] args) {
         LinkedList ll = new LinkedList();   
-        ll.addFirst(2);
-        ll.addFirst(1);
-        ll.addLast(3);
-        ll.addLast(4);
-        ll.addLast(5);
         
-        System.out.println(ll.recursiveSearch(6,0,head));
-    
+        ll.addLast(1);
+        ll.addLast(2);
+           ll.addLast(2);
+        ll.addLast(1);
+        
+        // System.out.println(ll.recursiveSearch(6,0,head));
+       
+        // ll.findAndRemovefromStart(3);
+        System.out.println(ll.checkPalindrome());
+
+       
     }
 }
