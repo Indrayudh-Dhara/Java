@@ -244,21 +244,78 @@ public class LinkedList {
 
         return true;
     }
+
+    public static boolean hasCycle(){ //Floyd's Cycle Algorithm
+        Node slow = head;
+        Node fast = head;
+        //normal linkedlist condition for odd and even
+        while(fast!=null && fast.next != null){
+            slow= slow.next;
+            fast=fast.next.next;
+            //condition for checking cycle
+            if(slow==fast){
+                return true;
+            }
+        } 
+        return false;
+
+    }
+    //code not for a full cycle (i.e where the cycle is connected with head itself  1(head)->2->3->-4>->1(head))   X 
+    public static void removeCycle(){
+        //detect cycle
+        Node slow = head;
+        Node fast = head;
+        boolean cycle = false;
+        while(fast!=null && fast.next != null){
+            slow=slow.next;
+            fast = fast.next.next;
+            if(slow==fast){
+               cycle = true;
+               break;
+            }
+        }
+        if(cycle==true){
+            slow=head;
+            Node prev = null;
+            while(slow!=fast){
+                slow=slow.next;
+                prev=fast;
+                fast = fast.next;   
+            }
+            prev.next=null;
+            System.out.println("Removed cycle");
+            return;
+        }
+          System.out.println("No cycle detected");
+        return;          
+    }
         
     
 
     public static void main(String[] args) {
-        LinkedList ll = new LinkedList();   
+        // LinkedList ll = new LinkedList();   
         
-        ll.addLast(1);
-        ll.addLast(2);
-           ll.addLast(2);
-        ll.addLast(1);
+        // ll.addLast(1);
+        // ll.addLast(2);
+        //    ll.addLast(2);
+        // ll.addLast(1);
+        
+        //creating a cycle LL
+        head = new Node(1);
+        head.next = new Node(2);
+        head.next.next = new Node(3);
+        head.next.next.next = new Node(4);
+        head.next.next.next.next = new Node(5);
+        head.next.next.next.next.next = head.next;
+        System.out.println(hasCycle());
+        removeCycle();
+        System.out.println(hasCycle());
+        //1->2->3->1
         
         // System.out.println(ll.recursiveSearch(6,0,head));
        
         // ll.findAndRemovefromStart(3);
-        System.out.println(ll.checkPalindrome());
+        // System.out.println(ll.checkPalindrome());
 
        
     }
