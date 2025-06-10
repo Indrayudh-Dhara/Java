@@ -1,3 +1,5 @@
+import Backtracking.gridWays;
+
 public class Revision {
    public static boolean checkPalindrome(String str){
    
@@ -28,12 +30,35 @@ public class Revision {
       return factorial(n-1)*n;
    }
 
-   public static void main(String[] args) {
-    int arr[] = {1,2,3,4,5};
-    reverseArr(arr);
-    for(int i = 0  ; i<arr.length ; i++){
-      System.out.print(arr[i] + " ");
-    }
-    System.out.println();
+   public static int gridWays(int grid[][] , int rows, int cols){
+      int count = 0 ; 
+
+      
+      if(rows==grid.length-1 && cols==grid[0].length-1){
+         return 1;
+      }
+      
+      if(rows<=grid.length-1){
+         count+=gridWays(grid, rows+1, cols);//down
+      }
+      if(cols<=grid.length-1){
+         count+=gridWays(grid , rows , cols+1);//right
+      }
+      
+      return count;
    }
+
+   public static void main(String[] args) {
+   //  int arr[] = {1,2,3,4,5};
+   //  reverseArr(arr);
+   //  for(int i = 0  ; i<arr.length ; i++){
+   //    System.out.print(arr[i] + " ");
+   //  }
+   //  System.out.println();
+   
+
+   int grid[][]=new int[4][4];
+   System.out.println(gridWays(grid , 0 , 0));
 }
+}
+
