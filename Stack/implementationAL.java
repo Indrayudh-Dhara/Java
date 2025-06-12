@@ -1,4 +1,4 @@
-package Stack;
+
 import java.util.ArrayList;
 
 //implementation of Stack using ArrayList

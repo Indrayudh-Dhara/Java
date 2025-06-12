@@ -1,4 +1,3 @@
-package Stack;
 
 
 //implementation of Stack using LinkedList
