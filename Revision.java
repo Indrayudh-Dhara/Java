@@ -1,3 +1,5 @@
+import java.util.Stack;
+
 import Backtracking.gridWays;
 
 public class Revision {
@@ -48,7 +50,34 @@ public class Revision {
       return count;
    }
 
+   public static boolean validParenthesis(String expression){
+      Stack<Character> s = new Stack<>();
+      boolean isValid= true;
+      for(int i = 0 ; i< expression.length() ; i++){
+         char currChar = expression.charAt(i);
+         if(currChar == '(' || currChar == '{' || currChar == '[' ){
+            s.push(currChar);
+         }else{
+            if(s.isEmpty()){
+               return false;
+            }
+         
+               if((currChar==')'&& s.pop()=='(') || (currChar=='}'&& s.pop()=='{') ||(currChar==']'&& s.pop()=='[')  ){
+                isValid = true;
+               }else{
+                  isValid=false;
+               }
+            
+         }
+      }
+      return isValid;
+
+   }
+
    public static void main(String[] args) {
+      String expresssion = "{}()[";
+      System.out.println(validParenthesis(expresssion));
+
    //  int arr[] = {1,2,3,4,5};
    //  reverseArr(arr);
    //  for(int i = 0  ; i<arr.length ; i++){
@@ -57,8 +86,10 @@ public class Revision {
    //  System.out.println();
    
 
-   int grid[][]=new int[4][4];
-   System.out.println(gridWays(grid , 0 , 0));
+   // int grid[][]=new int[4][4];
+   // System.out.println(gridWays(grid , 0 , 0));
+
+
 }
 }
 

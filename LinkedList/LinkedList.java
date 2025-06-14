@@ -359,16 +359,147 @@ public class LinkedList {
         //merge left and right
         return merge(newLeft,newRight);
     }
-    
 
+    public static void zigzagLL( Node head){
+
+        //find mid  (slow fast )
+        //start slow and fast with the head of the current linkedlist
+
+        Node slow = head;
+        Node fast = head.next; // as we need the last element of the first hald
+
+        while(fast!=null && fast.next!=null){
+            slow=slow.next;
+            fast=fast.next.next;
+        }
+        //here the slow is now pointing at the last element of the first half and fast is pointing at null end.
+        Node midNode = slow;
+        Node rightHead = midNode.next;
+        slow.next=null;
+
+        //reverse second half    3nodes,4 steps
+        Node prev=null;
+        Node curr=tail=rightHead;
+        Node next;
+
+        while(curr!=null){
+            next=curr.next;
+            curr.next=prev;
+            prev=curr;
+            curr=next;
+        }
+
+        rightHead=prev;
+        //alternate merging left and rotated right thus zig zag
+        Node lh =head; 
+        Node lr=rightHead;
+        Node lhNext;
+        Node lrNext;
+        while(lh!=null&&lr!=null){
+            lhNext=lh.next; //stores the next values for the current node in left half
+            lrNext=lr.next; //does the same for the right half
+            lh.next=lr; //links the elements from the start of  left half to the elements from the last in the right half
+            lr.next=lhNext; //links the element from the right half to those of the first in the left half
+            //incremement left head and right head temporary nodes
+            lr=lrNext;
+            lh=lhNext;
+        }
+
+
+        
+    }
+
+    public void deleteNafterM(int m , int n){
+        Node temp=head;
+        while(m-1>0){
+             m--;
+            temp=temp.next;
+           
+        }
+        //temp is not after m nodes
+        while(n>0){
+            n--;
+            temp.next=temp.next.next;
+            
+        }
+
+    }
+    
+    public void swapNodes(int x , int y){
+      Node prevX=null , currX=head;
+      Node prevY=null , currY=head;
+
+        //find x
+      while(currX!=null && currX.data!=x){
+        prevX=currX;
+        currX=currX.next;
+      }
+      while(currY!=null && currY.data!=y){
+        prevY=currY;
+        currY=currY.next;
+      }
+      Node temp=currY.next;
+      prevX.next=currY;
+      currY.next=currX.next;
+      prevY.next=currX;
+      currX.next=temp;
+    }
+
+    // public void oddEvenLL(){
+    //     Node prevOdd=head , curr=head.next;
+    //     Node prevOdd;
+    //     //i wanna find those previous 
+        
+    //     while(curr.data)
+    //         prev=curr;
+    //         curr=curr.next;
+       
+    // }
+
+    public boolean isPalindrome(){
+        if(head==null || head.next==null){
+            return true;
+        }
+       //find mid 
+       Node slow=head;
+       Node fast=head.next;
+       while(fast!=null &&fast.next!=null){
+        slow=slow.next;
+        fast=fast.next.next;
+       }
+       Node midNode = slow;
+        Node rightHead = slow.next;
+       midNode.next=null;
+       
+       //reverse second half
+       Node curr=rightHead;
+       Node prev=null;
+       Node next;
+       while(curr!=null){
+        next=curr.next;
+        curr.next=prev;
+        prev=curr;
+        curr=next;
+       }
+       rightHead=prev;
+       //check both half
+       while(rightHead!=null){
+        if(head.data!=rightHead.data){
+            return false;
+        }
+        head=head.next;
+        rightHead=rightHead.next;
+       }
+       return true;
+    }
     public static void main(String[] args) {
         LinkedList ll = new LinkedList();   
-        
-        ll.addFirst(1);
-        ll.addFirst(2);
-           ll.addFirst(3);
-        ll.addFirst(4);
-        ll.addFirst(5);
+        ll.addLast(1);
+        ll.addLast(2);
+        ll.addLast(3);
+        ll.addLast(2);
+        ll.addLast(3);
+       
         
         //creating a cycle LL
         // head = new Node(1);
@@ -387,9 +518,13 @@ public class LinkedList {
         // ll.findAndRemovefromStart(3);
         // System.out.println(ll.checkPalindrome());
 
+        // ll.print();
+        // ll.zigzagLL(head);
         ll.print();
-        ll.head= ll.mergeSort(ll.head);
-        ll.print();
+        System.out.println(ll.isPalindrome());
+        // ll.deleteNafterM(2, 2);
+        // ll.swapNodes(2, 5);
+        // ll.print();
 
        
     }
