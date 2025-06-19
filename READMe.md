@@ -2,22 +2,6 @@
 
 This repository contains all of my Data Structures and Algorithms (DSA) practice code written in **Java**. I regularly solve problems and implement classic algorithms and data structures to strengthen my problem-solving skills. All code is written and organized using **Visual Studio Code**.
 
-## 📁 Folder Structure
-
-├── OOPS/  
-├── Recursion/  
-├── 2-D Arrays/  
-├── Divide_And_Conquer/    
-├── Backtracking/  
-<!-- ├── Queues/
- ├── Trees/
-├── Graphs/
-├── Recursion_Backtracking/
-├── DynamicProgramming/
-├── Searching_Sorting/
-└── Miscellaneous/ -->
-
-
 Each folder contains Java files related to specific DSA topics, organized for easy navigation and reference.
 
 ## 🛠️ Tools & Technologies
@@ -31,7 +15,7 @@ Each folder contains Java files related to specific DSA topics, organized for ea
 1. Clone the repo:
    ```bash
    git clone https://github.com/Indrayudh-Dhara/Java.git
-   cd dsa-java-vscode
+   cd Java
 
 2. Open the folder in VS Code.
 
