@@ -19,7 +19,7 @@ public class ActivitySelection{
         // Arrays.sort(activities,Comparator.comparingDouble(o -> o[2])); //comparator is an interface that defines how to sort something , we defined that sorting is to be done by column 2(ending time)
 
         // //now just code the rest accordingly
-        //...................
+        //..................
 
 
 
