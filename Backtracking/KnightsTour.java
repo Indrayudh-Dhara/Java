@@ -1,72 +1,66 @@
 package Backtracking;
-public class KnightsTour {
 
-    private int N;
-    private int[][] board;
-    private int[] xMove = {2, 1, -1, -2, -2, -1, 1, 2};
-    private int[] yMove = {1, 2, 2, 1, -1, -2, -2, -1};
-
-    public KnightsTour(int N) {
-        this.N = N;
-        this.board = new int[N][N];
-        // Initialize board with -1 to indicate unvisited cells
-        for (int i = 0; i < N; i++) {
-            for (int j = 0; j < N; j++) {
-                board[i][j] = -1;
-            }
-        }
-    }
-
-    public void solve() {
-        // Start from the top-left corner (0, 0)
-        board[0][0] = 0; // First move
-        if (!solveKTUtil(0, 0, 1)) {
-            System.out.println("Solution does not exist");
-        } else {
-            printSolution();
-        }
-    }
-
-    private boolean solveKTUtil(int x, int y, int moveCount) {
-        if (moveCount == N * N) {
-            return true; // All squares visited
-        }
-
-        for (int i = 0; i < 8; i++) {
-            int nextX = x + xMove[i];
-            int nextY = y + yMove[i];
-
-            if (isSafe(nextX, nextY)) {
-                board[nextX][nextY] = moveCount;
-                if (solveKTUtil(nextX, nextY, moveCount + 1)) {
-                    return true;
-                } else {
-                    // Backtrack: If placing the knight here doesn't lead to a solution,
-                    // reset the cell and try a different move.
-                    board[nextX][nextY] = -1;
-                }
-            }
-        }
-
-        return false; // No valid move found from this position
-    }
-
-    private boolean isSafe(int x, int y) {
-        return (x >= 0 && x < N && y >= 0 && y < N && board[x][y] == -1);
-    }
-
-    private void printSolution() {
-        for (int i = 0; i < N; i++) {
-            for (int j = 0; j < N; j++) {
-                System.out.print(board[i][j] + " ");
+public class knightsTour {
+    //not optimized using Warnsdorff’s Heuristic
+    public static void printBoard(int board[][]){
+        System.out.println("-----board-----");
+        for(int i = 0 ; i<board.length ; i++){
+            for(int j = 0 ; j<board[0].length ; j++){
+                System.out.println(board[i][j]+ " ");
             }
             System.out.println();
         }
     }
 
+    static int dx[] = {-2 , -2 , -1 , -1 , +2 , +2 , +1 , +1 };  //all the moves for x dimension (row of board)
+    static int dy[] = {+1 , -1 , -2 ,  2 , -1 , +1 , -2 , +2};  //all the moves for y dimension (col of board)
+    static int n = 6; //board size
+
+    public static boolean solve(int board[][] , int moveCount , int x , int y ){
+        //base case -> all cells traversed thus its a valid solution
+        if(moveCount == n * n){
+            
+            return true;
+        }
+
+        for(int i = 0 ; i < 8 ; i++){
+            int nextX = x + dx[i];
+            int nextY = y + dy[i];
+
+            if(isSafe(board, nextX, nextY)){
+                board[nextX][nextY] = moveCount;
+
+                if(solve(board, moveCount + 1, nextX, nextY)){
+                    return true;
+                }
+
+                // backtrack
+                board[nextX][nextY] = -1;
+            }
+        }
+        return false;
+    }
+
+    public static boolean isSafe(int board[][] , int x , int y){
+        return x >= 0 && x < n && y >= 0 && y < n && board[x][y] == -1;
+    }
+
     public static void main(String[] args) {
-        int N = 8; // Example board size
-        KnightsTour kt = new KnightsTour(N);
-        kt.solve();
+        int board[][] = new int[n][n];
+
+        for(int i = 0 ; i < n ; i++){
+            for(int j = 0 ; j < n ; j++){
+                board[i][j] = -1;
+            }
+        }
+
+        board[0][0] = 0;
+
+        if(solve(board, 1 , 0 , 0)){
+            printBoard(board);
+        } else {
+            System.out.println("No solution exists");
+        }
     }
 }
+
