@@ -35,7 +35,7 @@ public class keypadCombinations {
     public static void backtrack(String current , String digit , ArrayList<String> result , int index , String mapping[] ){
         //base case
         //combination length must be equal to the digit length as we get to pick one each time for one number
-        //if index reaches digit length thus its a valid combination
+        //if index reaches digit length thus its a valid combination  , no more digit to call from 
         if(index==digit.length()){
             result.add(current);
             return;
@@ -44,7 +44,8 @@ public class keypadCombinations {
         //finding out and storing all the valid letters for the current digit at index 
         String letters = mapping[digit.charAt(index)-'0']; //converts '2'-> 2
 
-
+        //for every letter in the letter array we add it to the current and call for the next digit to add a letter from 
+        //in this way every 
         for(int i = 0 ; i<letters.length() ; i++){
             char ch = letters.charAt(i);
             backtrack(current+ch, digit, result, index+1, mapping);
