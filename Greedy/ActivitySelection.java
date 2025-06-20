@@ -7,7 +7,8 @@ public class ActivitySelection{
 
     public static void ActivitySelectionCode(int startTime[], int endTime[]){
 
-        // //sorting (Only applicable if the endTime is not sorted)
+        // //sorting (Only needed if the endTime is not sorted)
+
         // int activities[][]=new int[startTime.length][3]; //3 columns -one for storing original index , one for storing start time and another for end time for that activity
         // for(int i = 0 ; i<activities.length; i++){
         //     activities[i][0]=i; //storing index as when it gets sorted , we can track their original index

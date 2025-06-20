@@ -12,15 +12,33 @@ public class maxBalancedStr {
         // **Input:** `"LRRRRLLRLLRL"`
         // **Output:** `3`
 
-    public static void code(){
-        String str ="LRRRRLLRLLRL";
-      
+    public static void code(String str){
+        
+
+        int balance = 0 ; 
+        int count = 0 ;
+
+        for(int i = 0 ; i<str.length() ; i++){
+            char ch = str.charAt(i); //we take the current character
+            if(ch=='L'){ //now for L we increase balance
+                balance++;
+            }else{
+                balance--;//for R we decrease
+            }
+
+            if(balance ==0){ //balance 0 means L and R equal and also this is hard coded , (i.e as soon as we get a equal pair of l and r we break the string)
+                            //as we need the maximum no of partitions (GREEDY)
+                count++;
+            }
+        }
+        System.out.println(count);  
 
 
     }
 
 
     public static void main(String[] args) {
-        
+        String str ="LRRRRLLRLLRL";
+        code(str);
     }
 }
