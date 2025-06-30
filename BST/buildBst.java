@@ -1,6 +1,6 @@
 package BST;
 
-
+import java.util.Stack;
 
 public class buildBst {
 
@@ -92,6 +92,29 @@ public class buildBst {
             //now on 5 , 5 completed stack , thus popped 
             //now on 8 for the right part , similarly
         }
+      
+        public static void rootToleaf(Node root, Stack<Integer> s){
+
+            if(root==null){
+                return;
+            }
+            s.push(root.data);
+            if(root.left == null && root.right==null){
+                System.out.println(s);
+                
+            }
+            
+            
+            rootToleaf(root.left , s);
+            rootToleaf(root.right ,s);
+            
+            s.pop();
+
+            //mistakenly tried to print stack when A PARTICULAR root is null ,
+            // thats wrong as it just means that when the recursion happened for the parent's that can be one of the child which doesnt exist 
+            // there still can be another child which is THE LEAF (where we want to print)
+            
+        }
     public static void main(String[] args) {
         int values[] = {8,5,3,1,4,6,10,11,14};
 //         8
@@ -107,9 +130,12 @@ public class buildBst {
         root=insert(root, values[i]);
        }
 
+
+       Stack<Integer> s = new Stack<>();
        
        
     //    inorderTraversal(root);
-    printInRange(root , 5, 12);
+    // printInRange(root , 5, 12);
+    rootToleaf(root, s );
     }
 }
