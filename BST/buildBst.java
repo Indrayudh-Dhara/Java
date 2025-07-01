@@ -1,5 +1,6 @@
 package BST;
 
+import java.util.ArrayList;
 import java.util.Stack;
 
 public class buildBst {
@@ -115,6 +116,38 @@ public class buildBst {
             // there still can be another child which is THE LEAF (where we want to print)
             
         }
+
+    public static boolean validBST(Node root ,Node min , Node max ){ //returns boolean
+       
+        if(root==null){
+            return true;
+        }
+        if(max!=null && root.data >=  max.data){ //checking for the maximum (ie lst)
+            return false;
+        }
+        else if(min!=null && min.data>=root.data){
+            return false;
+        }
+
+       return validBST(root.left, min, root) && validBST(root.right, root, max); 
+    }
+
+    public static Node mirrorBST(Node root){
+        if(root==null){
+            return root; 
+        }
+
+        //if we wouldve called directly inside the root.right or left , swapping wouldnt have been possible;
+        Node leftMirror = mirrorBST(root.left);
+        Node rightMirror = mirrorBST(root.right);
+        
+
+        root.right=leftMirror;
+        root.left=rightMirror;
+
+
+        return root; //correct updated root propagation backwards the call stack after sub calls and calls are done 
+    }
     public static void main(String[] args) {
         int values[] = {8,5,3,1,4,6,10,11,14};
 //         8
@@ -131,11 +164,14 @@ public class buildBst {
        }
 
 
-       Stack<Integer> s = new Stack<>();
-       
+       Stack<Integer> s = new Stack<>(); //for root to leaf path
+        
        
     //    inorderTraversal(root);
     // printInRange(root , 5, 12);
-    rootToleaf(root, s );
+    // rootToleaf(root, s );
+    // System.out.println(validBST(root, null, null));
+    mirrorBST(root);
+    inorderTraversal(root);
     }
 }
