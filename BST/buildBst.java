@@ -148,30 +148,105 @@ public class buildBst {
 
         return root; //correct updated root propagation backwards the call stack after sub calls and calls are done 
     }
+
+    public static Node balancedBSTfromSortedArray(int arr[] , int si , int ei){
+        if(si>ei){ //invalid case ,  BST already created
+            return null;
+        }
+        
+        int mid = (si+ei)/2; //for every level calculating mid , so that we can attach a lst and rst for every node not just root and make it symmetric 
+        Node root = new Node(arr[mid]); 
+        root.right = balancedBSTfromSortedArray(arr, mid+1, ei);
+        root.left = balancedBSTfromSortedArray(arr, si, mid-1);
+        return root; //yk what
+    }
+
+    public static void preorder(Node root){
+        if(root==null){
+            return;
+        }
+        System.out.print(root.data+ " ");
+        preorder(root.left);
+        preorder(root.right);
+    }
+
+
+
+    //convert a normal bst to balanced bst (Util function)
+    public static ArrayList<Integer> getInorder(Node root , ArrayList<Integer> a){
+        if(root==null){
+            return a;
+        }
+
+        getInorder(root.left , a);
+        a.add(root.data);
+        getInorder(root.right, a);
+        return a;
+
+    }
+    //Util function
+    public static Node balancedBSTfromSortedArrayList(ArrayList<Integer> inorder , int si , int ei){
+        if(si>ei){
+            return null;
+        }
+        int mid = (si+ei)/2;
+        Node root = new Node(inorder.get(mid));
+        root.left = balancedBSTfromSortedArrayList(inorder, si, mid-1);
+        root.right = balancedBSTfromSortedArrayList(inorder, mid+1, ei);
+        return root;
+    }
+    public static void toBalancedBST(Node root){
+
+        ArrayList<Integer> inorder = new ArrayList<>(); //helper arraylist to store the returned inorder AL for the unbalanced BST
+        inorder = getInorder(root, new ArrayList<>());//stores
+        root = balancedBSTfromSortedArrayList(inorder, 0, inorder.size()-1); //changes and balances in the original BST using the inorder AL
+        preorder(root); //printed the preorder of the balanced BST
+    }
     public static void main(String[] args) {
-        int values[] = {8,5,3,1,4,6,10,11,14};
+        int values[] = {8,5,3,1,10,11,14};
 //         8
 //        / \
 //       5   10
-//      / \     \
-//     3   6     11
-//    / \           \
-//   1   4           14
+//      /      \
+//     3        11
+//    /           \
+//   1             14
 
         Node root = null;
        for(int i =0 ; i<values.length ; i++){
         root=insert(root, values[i]);
        }
 
+       toBalancedBST(root);
+       //expected bst
+//           8
+//        /    \
+//       3      11
+//      / \    /  \
+//     1   5  10   14
 
-       Stack<Integer> s = new Stack<>(); //for root to leaf path
+
+
+
+
+
+//        Stack<Integer> s = new Stack<>(); //for root to leaf path
         
-       
-    //    inorderTraversal(root);
-    // printInRange(root , 5, 12);
-    // rootToleaf(root, s );
-    // System.out.println(validBST(root, null, null));
-    mirrorBST(root);
-    inorderTraversal(root);
+//        int arr[]  = {3,5,6,8,9,10,11};
+
+//     //    inorderTraversal(root);
+//     // printInRange(root , 5, 12);
+//     // rootToleaf(root, s );
+//     // System.out.println(validBST(root, null, null));
+//     // mirrorBST(root);
+//     // inorderTraversal(root);
+//     Node root = balancedBSTfromSortedArray(arr, 0, arr.length-1);
+// //          8
+// //        /   \
+// //       5     10
+// //      / \   /  \
+// //     3   6 9    11
+// //            
+//     preorder(root);
     }
 }
