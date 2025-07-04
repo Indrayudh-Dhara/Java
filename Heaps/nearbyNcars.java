@@ -65,9 +65,9 @@ public class nearbyNcars {
 
         int points[][] = {{3,3},{5,-1},{-2,4}};
         PriorityQueue<CarsV2> pq2 = new PriorityQueue<>();
-        for(int i = 0 ; i<points.length; i++){
+        for(int i = 0 ; i<points.length; i++){ //nlogn (each add in pq (min heap) takes logn and we do this for n times n-> points.length)
             pq2.add(new CarsV2(points[i][0],points[i][1], "C"+i));
         }
-        nearestKcarsV2(pq2 , 2);
+        nearestKcarsV2(pq2 , 2); 
     }
 }

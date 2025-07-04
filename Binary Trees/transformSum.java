@@ -51,7 +51,12 @@ public class transformSum {
     root.right.left = new Node(6);
     root.right.right = new Node(7);
     transform(root);
-    preorderTraversal(root);
+    //       27
+    //     /    \
+    //    9      13
+    //   / \    /  \
+    //  0   0  0    0
+    preorderTraversal(root); //27-9-0-0-13-0-0
   
 
     }
