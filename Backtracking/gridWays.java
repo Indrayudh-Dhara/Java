@@ -1,5 +1,7 @@
 package Backtracking;
 
+import java.util.HashMap;
+
 public class gridWays {
 
 
@@ -42,5 +44,6 @@ public class gridWays {
     public static void main(String[] args) {
         int grid[][]=new int[4][5];
         System.out.println(gridWaysOptimized(grid));
+
     }
 }

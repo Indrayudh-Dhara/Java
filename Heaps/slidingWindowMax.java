@@ -20,6 +20,9 @@ public class slidingWindowMax {
         }
 
     }
+
+
+   
     public static void main(String[] args) {
         int window[] = {1,3,-1, -3,5,3,6,7};
         PriorityQueue<Pair> pq = new PriorityQueue<>(Comparator.reverseOrder());
@@ -45,5 +48,9 @@ public class slidingWindowMax {
         for(int i = 0 ; i<result.length ;i++){
             System.out.print(result[i]+" ");
         }
+
+
+        
+        
     }
 }

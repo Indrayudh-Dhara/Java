@@ -75,19 +75,22 @@ public class Revision {
    }
 
    public static void main(String[] args) {
-      String expresssion = "{}()[";
-      System.out.println(validParenthesis(expresssion));
+   //    String expresssion = "{}()[";
+   //    System.out.println(validParenthesis(expresssion));
 
-   //  int arr[] = {1,2,3,4,5};
-   //  reverseArr(arr);
-   //  for(int i = 0  ; i<arr.length ; i++){
-   //    System.out.print(arr[i] + " ");
-   //  }
-   //  System.out.println();
+   // //  int arr[] = {1,2,3,4,5};
+   // //  reverseArr(arr);
+   // //  for(int i = 0  ; i<arr.length ; i++){
+   // //    System.out.print(arr[i] + " ");
+   // //  }
+   // //  System.out.println();
    
 
-   // int grid[][]=new int[4][4];
-   // System.out.println(gridWays(grid , 0 , 0));
+   // // int grid[][]=new int[4][4];
+   // // System.out.println(gridWays(grid , 0 , 0));
+
+   int a = 6;
+   System.out.println(~a|a);
 
 
 }
