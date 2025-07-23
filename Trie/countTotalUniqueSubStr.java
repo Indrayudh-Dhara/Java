@@ -16,39 +16,52 @@ public class countTotalUniqueSubStr {
             }
         }
     }
-    public static int substring = 0 ;
+    public static int substring = 1 ;
     public static Node root = new Node();
     public static void insert(String word){
         Node curr = root;
         for(int i = 0 ; i<word.length() ; i++){
             int idx = word.charAt(i)-'a';
             if(curr.children[idx]== null){
-
                 curr.children[idx]=new Node();
+                //either this or we can make another function just to calculate count
                 substring++;
             }
             curr = curr.children[idx];
         }
+         
         curr.eow = true;
     }
-    ;
+    
+    public static int countNodes(Node root){
+        if(root==null){
+            return 0;
+        }
+        
+        int count=0;
+        for(int i = 0 ; i<26 ; i++){
+            if(root.children[i]!=null){
+                count+=countNodes(root.children[i]);
+            }
+        }
+        return count+1; //including itself
+    }
     
 
-    public static void substring(String str){
-        
-        
-        for(int i =  0 ;i<str.length() ; i++){
-            insert(str.substring( i));
-            
+     public static void countUniqueSubstrings(String str) {
+        for (int i = 0; i <str.length(); i++) {
+            insert(str.substring(i)); // Insert all suffixes
         }
-       
+        int count = countNodes(root);
+        System.out.println(count);
     }
+
+
+   
     public static void main(String[] args) {
         String str = "ababa";
-        substring(str);
-        System.out.println(substring);
-        HashMap<Integer ,Integer> hp = new HashMap<>();
-        
+        countUniqueSubstrings(str);
+            
 
     }
 }

@@ -39,18 +39,6 @@ public class prefix {
         curr.eow = true;
     }
 
-    public static boolean search(String word){ ///O(L)
-        Node curr = root;
-        for(int level = 0 ; level<word.length() ; level++){
-            int idx = word.charAt(level)-'a';
-            if(curr.children[idx]==null){
-                return false;
-            }
-            curr=curr.children[idx];
-        }
-        return curr.eow==true;
-    }
-
     public static void prefixCode(String words[]){
         ArrayList<StringBuilder> prefixList = new ArrayList<>();
         for(String word : words){
