@@ -50,7 +50,9 @@ public class understanding {
         System.out.println(fibonacciDynamicM(n, dp));//5
         System.out.println(fibonacciDynamicT(n, dp2));//5
         String word = "Nigga";
-      
+      StringBuilder words = new StringBuilder()
+      words.set;
+      words.replace(0, 0, "a");
         System.out.println(word);
         List<String> wordList = new ArrayList<>();
         for(String words : wordList){
