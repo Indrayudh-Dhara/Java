@@ -196,5 +196,11 @@ public class divAndCon {
     public static void main(String[] args) {
         int arr[] = {2,2,3,3,3,3};
         System.out.print(majorityELement(arr, 0, arr.length-1));
+
+        String s = "aabnana";
+        Map<Integer,Integer> hs= new HashMap<>();
+       Collections.sort(list , Collections.reverseOrder());
+        Stack<Character
+        
     }
 }

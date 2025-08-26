@@ -10,7 +10,9 @@ public class Sorting {
             }
         }   
      }
+     
      public static void selectionSort(int arr[]){
+
         
         for(int i =0;i<=arr.length;i++){
             int smallest = Integer.MAX_VALUE;
@@ -55,12 +57,14 @@ public class Sorting {
         }
      }
     public static void main(String[] args) {
-        int arr[]={3,6,2,1,8,7,4,5,3,1};
-        // bubbleSort(arr);
-        // insertionSort(arr);
-        countingSort(arr);
-        for(int i= 0;i<arr.length;i++){
-           System.out.print(arr[i]);
-        }
+        // int arr[]={3,6,2,1,8,7,4,5,3,1};
+        // // bubbleSort(arr);
+        // // insertionSort(arr);
+        // countingSort(arr);
+        // for(int i= 0;i<arr.length;i++){
+        //    System.out.print(arr[i]);
+        // }
+
+        System.out.println((int)'V'-(int)'A'-7);
     }
 }

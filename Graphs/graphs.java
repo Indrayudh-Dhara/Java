@@ -100,16 +100,16 @@ public class graphs {
     //1. only doing recursion if not visited
     //2. using recursive calls only if (e.dest) isnt visited
     public static void dfsUtil(ArrayList<Edge>[] graph ,int curr , boolean[] visited){
-        if(visited[curr]){
-            return;
-        }
-        
-            System.out.print(curr + " ");
-            visited[curr] = true;
+        visited[curr]=true;
+
+        System.out.print(curr + " ");
         
         for(int i=0 ; i<graph[curr].size() ; i++){
             Edge e = graph[curr].get(i); 
-            dfsUtil(graph, e.dest, visited);
+            if(!visited[e.dest]){
+                dfsUtil(graph, e.dest, visited);
+
+            }
         }
     
     }

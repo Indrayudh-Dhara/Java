@@ -2,7 +2,21 @@ import java.util.*;
 public class Strings{
     //palindrome check function
     public static boolean checkPalindrome(String str){
+                
+
+
+
         
+       
+
+
+
+
+
+
+
+
+
         for(int i=0 ; i<=str.length()/2;i++){
             if(str.charAt(i)!=str.charAt(str.length()-1-i)){
                 return false;
@@ -46,17 +60,23 @@ public class Strings{
     }
     //
     public static void main(String[] args) {
-        StringBuilder first = new StringBuilder("raceer");
-        StringBuilder second = new StringBuilder("caree");
-                // String strNew = "hi , i am indrayudh";
-        // for(int i = 0 ; i<strNew.length();i++){
-        //     if(i==0 || strNew.charAt(i-1)==' '){
-        //         Character.toUpperCase(strNew.charAt(i));
-        //     }
-        // }
-        // System.out.println(strNew);
-        // checkLowerCase(str);
-        checkAnagram(first, second);
+        // StringBuilder first = new StringBuilder("raceer");
+        // StringBuilder second = new StringBuilder("caree");
+        //         // String strNew = "hi , i am indrayudh";
+        // // for(int i = 0 ; i<strNew.length();i++){
+        // //     if(i==0 || strNew.charAt(i-1)==' '){
+        // //         Character.toUpperCase(strNew.charAt(i));
+        // //     }
+        // // }
+        // // System.out.println(strNew);
+        // // checkLowerCase(str);
+        // checkAnagram(first, second);
+
+        String words= "I love bbc";
+
+        String arr[] = words.split(" ");
+        
+        System.out.println(arr[0]);
         
     }
 }
